@@ -4,6 +4,15 @@ A headless phone number input component built for usability. Because [phone numb
 
 Uses [libphonenumber-js] under the hood. Built with React Hooks.
 
+
+- 100% headless: Bring your own UI. You can use almost any input component you already have
+- Lets users copy & paste phone numbers of any format
+- Typescript support
+- Built-in lazy-loading with progressive enhancement (clocks in at 40KB without lazy-loading)
+- Lets users copy & paste phone numbers of any format
+- Acts like a normal input: Doesn’t glitch if a user edits in-place or deletes template characters
+- Validates number plausibility
+
 [Demo][demo]
 
 ## Install
