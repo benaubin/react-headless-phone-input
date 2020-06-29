@@ -1,6 +1,6 @@
 # React Headless Phone Input
 
-A usability-first headless phone number input component. Because [phone numbers are hard][falsehoods].
+A usability-first headless phone number input component built for speed. Bring your own UI. Because [phone numbers are hard][falsehoods].
 
 Uses [libphonenumber-js] under the hood. Built with React Hooks.
 
