@@ -1,0 +1,36 @@
+{
+  "name": "react-headless-phone-input",
+  "version": "1.0.0",
+  "description": "A headless phone number input component",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "sideEffects": false,
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "libphonenumber-js": "^1.7.54"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^5.0.1",
+    "@types/node": "^14.0.14",
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8",
+    "rollup": "^2.18.1",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.5"
+  },
+  "author": "Ben Aubin (benaubin.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benaubin/react-headless-phone-input.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benaubin/tiny-flag-react/issues"
+  },
+  "homepage": "https://github.com/benaubin/tiny-flag-react#readme"
+}
