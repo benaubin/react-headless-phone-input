@@ -10,10 +10,12 @@ Built with React Hooks.
 
 ## Why?
 
-[Phone numbers are hard][falsehoods]. Users expect to be able to enter phone numbers in the format they're used to, which likely doesn't include a country code.
-This component helps you build a UI that gracefully guides your users towards correctly formatting their phone number.  As output, you get unambigous e164-formatted phone numbers ready to use programmatically. 
+[Phone numbers are hard][falsehoods]. Users expect to be able to enter phone numbers in the format they're used to. Here's the problem: most people are used to national - or even local phone number formats. If you offload phone number validation to your backend (or an API), resolving the ambiguity becomes difficult or even impossible.
+
+This component helps you build a UI that gracefully guides your users towards unambigious phone number formats. And you get the result in standard e164 format: ready for use with any telephony service. 
 
 Other libraries are generally heavy (phone number rulesets can be big - 99.1% of this library's [footprint][bundlephobia] is due to [libphonenumber-js]), force you to use their UI, and can't handle copy & paste or edit-in-place. `react-headless-phone-input` is designed for usability-first, and lets you bring your own input components. In fact, your existing input fields will almost certainly work with no modifications.
+
 
 ## Install
 
