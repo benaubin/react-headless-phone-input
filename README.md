@@ -1,6 +1,6 @@
 # React Headless Phone Input
 
-A usability-first headless phone number input component built for speed. Bring your own UI. Because [phone numbers are hard][falsehoods].
+A headless phone number input component built for usability. Because [phone numbers are hard][falsehoods].
 
 Uses [libphonenumber-js] under the hood. Built with React Hooks.
 
@@ -15,9 +15,9 @@ yarn add react-headless-phone-input
 
 ## Example
 
-This library is headless, so you bring your own UI. Don't worry, doing so is simple.
+This library is headless: you bring your own UI, but it's almost as easy as using regular inputs.
 
-Works well paired with [tiny-flag-react] to show a flag indicating the number's country:
+Here's an example using [tiny-flag-react] to show the flag associated with the number's country:
 
 ```js
 import TinyFlagReact from "tiny-flag-react";
