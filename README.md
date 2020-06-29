@@ -54,7 +54,7 @@ const [e164, setE164] = useState("");
           }}>
           <TinyFlagReact
             country={country}
-            countryName={country}
+            alt={country}
             fallbackImageURL={`https://cdn.jsdelivr.net/npm/react-flagkit@1.0.2/img/SVG/${country}.svg`}
           />
         </span>
