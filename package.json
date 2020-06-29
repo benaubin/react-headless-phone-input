@@ -1,6 +1,6 @@
 {
   "name": "react-headless-phone-input",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A headless phone number input component",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
