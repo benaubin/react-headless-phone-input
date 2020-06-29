@@ -1,5 +1,5 @@
 export interface PhoneFormatterProps {
-  defaultCountry?: string;
+  defaultCountry: string;
   value: string | undefined;
   onChange(v: string | undefined): void;
 
