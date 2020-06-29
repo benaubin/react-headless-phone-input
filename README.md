@@ -9,9 +9,11 @@ Uses [libphonenumber-js] under the hood. Built with React Hooks.
 - Lets users copy & paste phone numbers of any format
 - Typescript support
 - Built-in lazy-loading with progressive enhancement (clocks in at 40KB without lazy-loading)
+- Detects the associated country, enabling international phone input.
 - Lets users copy & paste phone numbers of any format
 - Acts like a normal input: Doesn’t glitch if a user edits in-place or deletes template characters
 - Validates number plausibility
+- External state is standard e164 format
 
 [Demo][demo]
 
