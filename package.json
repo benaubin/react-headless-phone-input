@@ -1,9 +1,9 @@
 {
   "name": "react-headless-phone-input",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "description": "A headless phone number input component",
-  "main": "dist/PhoneFormatter.js",
-  "module": "dist/PhoneFormatter.mjs",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c"

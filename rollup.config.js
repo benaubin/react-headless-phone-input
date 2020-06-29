@@ -2,7 +2,7 @@ import typescript from "@rollup/plugin-typescript";
 
 export default [
   {
-    input: ["./src/LazyPhoneFormatter.tsx", "./src/PhoneFormatter.tsx"],
+    input: ["./src/lazy.tsx", "./src/index.tsx"],
     output: [{ dir: "dist", format: "es", entryFileNames: "[name].mjs" }],
     external: ["react", "libphonenumber-js/min"],
     plugins: [
@@ -14,10 +14,10 @@ export default [
     ],
   },
   {
-    input: "./src/PhoneFormatter.tsx",
+    input: "./src/index.tsx",
     output: [
       {
-        file: "dist/PhoneFormatter.js",
+        file: "dist/index.js",
         format: "cjs",
       },
     ],

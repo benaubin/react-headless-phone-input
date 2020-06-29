@@ -1,5 +1,5 @@
 import { AsYouType, CountryCode } from "libphonenumber-js/min";
-import React, { useEffect, useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { PhoneFormatterProps } from "../types/PhoneFormatterProps";
 
 /**
@@ -15,7 +15,7 @@ export default function PhoneFormatter({
     () => new AsYouType(props.defaultCountry as CountryCode)
   );
 
-  const [error, setError] = useState<string | null>(null);
+  const [impossible, setImpossible] = useState<boolean | null>(null);
 
   function setValue(newValue: string) {
     if (inputValue == newValue) return;
@@ -34,7 +34,7 @@ export default function PhoneFormatter({
     onChange(formatter.getNumber()?.number as string);
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const number = formatter.getNumber()?.number;
     if (number) {
       if (number != props.value) {
@@ -54,9 +54,7 @@ export default function PhoneFormatter({
       // No valid number in the field and no prop value - no change.
       return;
     }
-    setError(
-      formatter.getNumber()?.isPossible() ? null : "Invalid phone number"
-    );
+    setImpossible(formatter.getNumber()?.isPossible() === false);
     onChange(formatter.getNumber()?.number as string);
   }, [props.value, formatter, inputValue, onChange]);
 
@@ -66,17 +64,15 @@ export default function PhoneFormatter({
     <>
       {props.children({
         country: country,
-        error,
+        impossible: impossible,
         inputValue,
         onChange(e) {
           setValue(e.target.value);
+          if (impossible && formatter.getNumber()?.isPossible())
+            setImpossible(false);
         },
         onBlur() {
-          setError(
-            inputValue && formatter.getNumber()?.isPossible()
-              ? null
-              : "Invalid phone number"
-          );
+          setImpossible(formatter.getNumber()?.isPossible() === false);
           setInputValue(formatter.input(""));
         },
       })}

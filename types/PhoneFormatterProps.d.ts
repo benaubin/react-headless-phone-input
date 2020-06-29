@@ -5,7 +5,7 @@ export interface PhoneFormatterProps {
 
   children(data: {
     country?: string;
-    error?: string | null;
+    impossible?: boolean | null;
     onBlur(): void;
     inputValue: string;
     onChange(e: React.ChangeEvent<HTMLInputElement>): void;
