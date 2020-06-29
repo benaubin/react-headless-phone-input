@@ -1,5 +1,5 @@
 import { AsYouType, CountryCode } from "libphonenumber-js/min";
-import React, { useState, useLayoutEffect } from "react";
+import React from "react";
 import { PhoneFormatterProps } from "../types/PhoneFormatterProps";
 
 /**
@@ -9,13 +9,13 @@ export default function PhoneFormatter({
   onChange,
   ...props
 }: PhoneFormatterProps) {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = React.useState("");
 
-  const [formatter] = useState(
+  const [formatter] = React.useState(
     () => new AsYouType(props.defaultCountry as CountryCode)
   );
 
-  const [impossible, setImpossible] = useState<boolean | null>(null);
+  const [impossible, setImpossible] = React.useState<boolean | null>(null);
 
   function setValue(newValue: string) {
     if (inputValue == newValue) return;
@@ -34,7 +34,7 @@ export default function PhoneFormatter({
     onChange(formatter.getNumber()?.number as string);
   }
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     const number = formatter.getNumber()?.number;
     if (number) {
       if (number != props.value) {
