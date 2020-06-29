@@ -9,7 +9,7 @@ export default [
       typescript({
         declaration: true,
         outDir: "dist",
-        target: "es2020",
+        target: "es2018",
       }),
     ],
   },
