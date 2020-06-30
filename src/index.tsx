@@ -58,7 +58,7 @@ export default function PhoneFormatter({
     onChange(formatter.getNumber()?.number as string);
   }, [props.value, formatter, inputValue, onChange]);
 
-  const country = formatter.getNumber()?.country || props.defaultCountry;
+  const country = formatter.getNumber()?.country;
 
   return (
     <>
