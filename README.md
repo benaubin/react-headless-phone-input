@@ -52,31 +52,37 @@ import PhoneFormatter from "react-headless-phone-input";
 const [e164, setE164] = useState("");
 
 <PhoneFormatter defaultCountry="US" value={e164} onChange={setE164}>
-  {({ country, impossible, onBlur, onChange, inputValue }) => (
-    <>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <span
-          style={{
-            fontSize: "24px",
-          }}>
-          <TinyFlagReact
-            country={country}
-            alt={country}
-            fallbackImageURL={`https://cdn.jsdelivr.net/npm/react-flagkit@1.0.2/img/SVG/${country}.svg`}
+  {({ country, impossible, onBlur, onInputChange, inputValue }) => {
+    return (
+      <>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <span
+            style={{
+              fontSize: "24px",
+            }}>
+            {country ? (
+              <TinyFlagReact
+                country={country}
+                alt={country + " flag"}
+                fallbackImageURL={`https://cdn.jsdelivr.net/npm/react-flagkit@1.0.2/img/SVG/${country}.svg`}
+              />
+            ) : (
+              <>✆</>
+            )}
+          </span>
+          <input
+            type="tel"
+            value={inputValue}
+            onBlur={onBlur}
+            onChange={(e) => onInputChange(e.target.value)}
           />
-        </span>
-        <input
-          type="tel"
-          value={inputValue}
-          onBlur={onBlur}
-          onChange={(e) => onChange}
-        />
-      </div>
-      {impossible && (
-        <div style={{ color: "red" }}>Impossible phone number</div>
-      )}
-    </>
-  )}
+        </div>
+        {impossible && (
+          <div style={{ color: "red" }}>Impossible phone number</div>
+        )}
+      </>
+    );
+  }}
 </PhoneFormatter>;
 ```
 
