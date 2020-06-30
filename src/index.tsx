@@ -1,4 +1,5 @@
-import { AsYouType, CountryCode } from "libphonenumber-js/min";
+import { AsYouType } from "libphonenumber-js/min/index";
+import type { CountryCode } from "libphonenumber-js/min";
 import React from "react";
 import { PhoneFormatterProps } from "../types/PhoneFormatterProps";
 
