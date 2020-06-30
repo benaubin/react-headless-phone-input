@@ -1,12 +1,12 @@
 {
   "name": "react-headless-phone-input",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A headless phone number input component",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "sideEffects": false,
   "scripts": {
-    "build": "rollup -c"
+    "build": "rm -rf dist && rollup -c"
   },
   "dependencies": {
     "libphonenumber-js": "^1.7.54"

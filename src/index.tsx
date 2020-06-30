@@ -72,8 +72,20 @@ export default function PhoneFormatter({
             setImpossible(false);
         },
         onBlur() {
-          setImpossible(formatter.getNumber()?.isPossible() === false);
-          setInputValue(formatter.input(""));
+          const number = formatter.getNumber();
+          if (number) {
+            const possible = number.isPossible();
+            setImpossible(!possible);
+
+            if (possible) {
+              const e164 = number.number as string;
+              formatter.reset();
+              setInputValue(formatter.input(e164));
+              onChange(e164);
+            } else {
+              setInputValue(formatter.input(""));
+            }
+          }
         },
       })}
     </>
