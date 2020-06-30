@@ -13,8 +13,8 @@ export default function LazyPhoneFormatter(props: PhoneFormatterProps) {
         <>
           {props.children({
             inputValue: props.value || "",
-            onChange(e) {
-              props.onChange(e.target.value);
+            onInputChange(v) {
+              props.onChange(v);
             },
             onBlur() {
               /* no-op */
