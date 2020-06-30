@@ -4,19 +4,26 @@ A headless phone number input component built for usability.
 
 [Phone numbers are hard][falsehoods]. Users expect to be able to enter phone numbers in the format they're used to. Here's the problem: most people are used to national - or even local phone number formats. If you offload phone number validation to your backend (or an API), resolving the ambiguity becomes difficult or even impossible.
 
-This component helps you build a UI that gracefully guides your users towards unambiguous phone number formats. And you get the result in standard e164 format: ready for use with any telephony service. 
+This component helps you build a UI that gracefully guides your users towards unambiguous phone number formats. And you get the result in standard e164 format: ready for use with any telephony service.
 
 Other libraries are generally heavy (phone number rulesets can be big - 99.1% of this library's [footprint][bundlephobia] is due to [libphonenumber-js]), force you to use their UI, and can't handle copy & paste or edit-in-place. `react-headless-phone-input` is designed for usability-first, and lets you bring your own input components. In fact, your existing input fields will almost certainly work with no modifications. Plus, it supports optional lazy-loading with progressive enhancement powered by React Suspense.
 
-Uses [libphonenumber-js] under the hood. Built with React Hooks.
+Built with React Hooks.
 
 [Demo][demo]
 
 ## Install
 
+Install both react-headless-input and [libphonenumber-js]:
+
 ```sh
-npm i --save react-headless-phone-input
-yarn add react-headless-phone-input
+npm i --save react-headless-phone-input libphonenumber-js
+```
+
+or
+
+```sh
+yarn add react-headless-phone-input libphonenumber-js
 ```
 
 ## Features
@@ -62,7 +69,7 @@ const [e164, setE164] = useState("");
           type="tel"
           value={inputValue}
           onBlur={onBlur}
-          onChange={onChange}
+          onChange={(e) => onChange}
         />
       </div>
       {impossible && (

@@ -9,11 +9,10 @@
     "build": "rm -rf dist && rollup -c",
     "prepare": "npm run build"
   },
-  "dependencies": {
-    "libphonenumber-js": "^1.7.54"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "react": "^16.13.1"
+    "react": "^16.9.41",
+    "libphonenumber-js": "^1.7.54"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.1",
@@ -21,6 +20,8 @@
     "@types/node": "^14.0.14",
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
+    "libphonenumber-js": "^1.7.54",
+    "react": "^16.13.1",
     "rollup": "^2.18.1",
     "tslib": "^2.0.0",
     "typescript": "^3.9.5"
