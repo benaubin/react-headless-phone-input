@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PhoneFormatter from "../dist";
 
-import TinyFlagReact from "tiny-flag-react/dist/index";
+import TinyFlagReact from "tiny-flag-react/dist/index.js";
 
 export default { title: "PhoneFormatter" };
 
@@ -84,6 +84,30 @@ export const demo = () => {
         }}>
         Clear phone number
       </button>
+
+      <style>{`
+        body {
+          font-family: sans-serif;
+        }
+        .unstyled {
+          background: none;
+          outline: none;
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          border: none;
+          font-family: unset;
+          font-size: 1em;
+          color: #0074d9;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+
+        li {
+          padding: 0.5rem 0;
+        }
+
+        `}</style>
     </div>
   );
 };
