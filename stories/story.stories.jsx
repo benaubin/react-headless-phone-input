@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PhoneFormatter from "../dist";
+import PhoneFormatter from "../lazy";
 
 import TinyFlagReact from "tiny-flag-react/dist/index.js";
 
