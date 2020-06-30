@@ -6,7 +6,8 @@
   "module": "dist/index.mjs",
   "sideEffects": false,
   "scripts": {
-    "build": "rm -rf dist && rollup -c"
+    "build": "rm -rf dist && rollup -c",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "libphonenumber-js": "^1.7.54"
