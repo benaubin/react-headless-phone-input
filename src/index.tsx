@@ -7,55 +7,60 @@ import { PhoneFormatterProps } from "../types/PhoneFormatterProps";
  */
 export default function PhoneFormatter({
   onChange,
+  defaultCountry,
   ...props
 }: PhoneFormatterProps) {
   const [inputValue, setInputValue] = React.useState("");
 
   const [formatter] = React.useState(
-    () => new AsYouType(props.defaultCountry as CountryCode)
+    () => new AsYouType(defaultCountry as CountryCode | undefined)
   );
 
   const [impossible, setImpossible] = React.useState<boolean | null>(null);
 
-  function setValue(newValue: string) {
+  const onInputChange = (newValue: string) => {
     if (inputValue == newValue) return;
 
-    if (
-      // check if this is just appending a value
+    // The as-you-type formatter only works with append-only inputs.
+    // Changes other than append require a reset.
+    const isAppend =
       newValue.length > inputValue.length &&
-      newValue.slice(0, inputValue.length) == inputValue
-    ) {
-      setInputValue(formatter.input(newValue.slice(inputValue.length)));
+      newValue.slice(0, inputValue.length) == inputValue;
+
+    if (isAppend) {
+      const appended = newValue.slice(inputValue.length);
+      setInputValue(formatter.input(appended));
     } else {
+      // Reset the formatter, but do not reformat.
+      // Doing so now will cause the user to loose their cursor position
+      // Wait until blur or append to reformat.
       formatter.reset();
       formatter.input(newValue);
       setInputValue(newValue);
     }
-    onChange(formatter.getNumber()?.number as string);
-  }
+
+    const number = formatter.getNumber();
+
+    const e164 = number?.number as string | undefined;
+    onChange(e164);
+
+    if (impossible && number && number.isPossible()) setImpossible(false);
+  };
 
   React.useLayoutEffect(() => {
     const number = formatter.getNumber()?.number;
-    if (number) {
-      if (number != props.value) {
-        // override the phone number if the field has a number and it doesn't match the prop value.
-        formatter.reset();
-        setInputValue(props.value ? formatter.input(props.value) : "");
-      } else {
-        // no change, input value matches field value
-        return;
-      }
-    } else if (props.value) {
-      // no valid number in the field, but prop value is set
-      // treat as input
+
+    if (number != props.value) {
+      // override the phone number if the field has a number and its e164 representation doesn't match the prop value.
       formatter.reset();
-      setInputValue(formatter.input(props.value));
-    } else {
-      // No valid number in the field and no prop value - no change.
-      return;
+      setInputValue(props.value ? formatter.input(props.value) : "");
+
+      const number = formatter.getNumber();
+      setImpossible(number == null ? null : !number.isPossible());
+
+      const e164 = number?.number as string | undefined;
+      onChange(e164);
     }
-    setImpossible(formatter.getNumber()?.isPossible() === false);
-    onChange(formatter.getNumber()?.number as string);
   }, [props.value, formatter, inputValue, onChange]);
 
   const country = formatter.getNumber()?.country;
@@ -63,28 +68,28 @@ export default function PhoneFormatter({
   return (
     <>
       {props.children({
-        country: country,
-        impossible: impossible,
+        country,
+        impossible,
         inputValue,
-        onChange(e) {
-          setValue(e.target.value);
-          if (impossible && formatter.getNumber()?.isPossible())
-            setImpossible(false);
-        },
+        onInputChange,
         onBlur() {
           const number = formatter.getNumber();
-          if (number) {
-            const possible = number.isPossible();
-            setImpossible(!possible);
 
-            if (possible) {
-              const e164 = number.number as string;
-              formatter.reset();
-              setInputValue(formatter.input(e164));
-              onChange(e164);
-            } else {
-              setInputValue(formatter.input(""));
-            }
+          onChange(number?.number as string);
+
+          if (!number) return setImpossible(null);
+
+          // Check and update possibility
+          const possible = number.isPossible();
+          setImpossible(!possible);
+
+          if (possible) {
+            // Reformat the phone number as international
+            formatter.reset();
+            setInputValue(formatter.input(number.number as string));
+          } else {
+            // Format the phone number
+            setInputValue(formatter.input(""));
           }
         },
       })}
