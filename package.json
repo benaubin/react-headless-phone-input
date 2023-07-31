@@ -2,35 +2,43 @@
   "name": "react-headless-phone-input",
   "version": "2.0.0",
   "description": "A headless phone number input component",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "type": "module",
+  "main": "dist/index.umd.cjs",
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    },
+    "./lazy": {
+      "import": "./dist/lazy.js"
+    }
+  },
   "sideEffects": false,
   "scripts": {
-    "build": "rm -rf dist && rollup -c",
-    "prepare": "npm run build",
-    "storybook": "start-storybook"
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
-  "dependencies": {},
   "peerDependencies": {
-    "react": "^16.9.41",
-    "libphonenumber-js": "^1.7.54"
+    "libphonenumber-js": "^1.10.38",
+    "react": "^18"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.4",
-    "@rollup/plugin-alias": "^3.1.1",
-    "@rollup/plugin-typescript": "^5.0.1",
-    "@storybook/react": "^5.3.19",
-    "@types/node": "^14.0.14",
-    "@types/react": "^16.9.41",
-    "@types/react-dom": "^16.9.8",
-    "babel-loader": "^8.1.0",
-    "libphonenumber-js": "^1.7.54",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "rollup": "^2.18.1",
-    "tiny-flag-react": "^2.0.1",
-    "tslib": "^2.0.0",
-    "typescript": "^3.9.5"
+    "@storybook/addon-essentials": "^7.1.1",
+    "@storybook/addon-interactions": "^7.1.1",
+    "@storybook/addon-links": "^7.1.1",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.1.1",
+    "@storybook/react": "^7.1.1",
+    "@storybook/react-vite": "^7.1.1",
+    "@storybook/testing-library": "^0.2.0",
+    "libphonenumber-js": "^1.10.38",
+    "react": "^18",
+    "react-dom": "^18",
+    "storybook": "^7.1.1",
+    "tiny-flag-react": "^2",
+    "typescript": "*",
+    "vite": "^4.4.7"
   },
   "author": "Ben Aubin (benaubin.com)",
   "license": "MIT",
@@ -41,5 +49,8 @@
   "bugs": {
     "url": "https://github.com/benaubin/tiny-flag-react/issues"
   },
-  "homepage": "https://github.com/benaubin/tiny-flag-react#readme"
+  "homepage": "https://github.com/benaubin/tiny-flag-react#readme",
+  "dependencies": {
+    "vite-plugin-dts": "^3.4.0"
+  }
 }

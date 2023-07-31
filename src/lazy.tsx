@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from "react";
-import { PhoneFormatterProps } from "../types/PhoneFormatterProps";
+import type { PhoneFormatterProps } from "./PhoneFormatter";
 
-const PhoneFormatter = lazy(() => import("."));
+const PhoneFormatter = lazy(() => import("./PhoneFormatter"));
 
 /**
  * Lazy version of PhoneFormatter, using React.Suspense for progressive enhancement.
